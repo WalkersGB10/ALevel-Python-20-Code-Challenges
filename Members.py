@@ -20,5 +20,20 @@ while True:
             gender = input("What gender are you")
     break
 
-f.write("\n"+name+"|"+age+"|"+email+"|"+gender+"|")
+f.write(name+"|"+age+"|"+email+"|"+gender+"|")
 f.close()
+
+ans = input("Would you like to see members?").lower()
+if ans[0] == "y":
+    f = open("Members.txt", "r")
+    stuff = f.read()
+    f.close()
+    members = stuff.split("|")
+    print(members)
+    person = input("Who would you like to find")
+    if person in members:
+        pos = members.index(person)
+        name = members[pos]; age = members[pos+1]; email = members[pos+2]; gender = members[pos+3]
+        print(f"Name: {name}\nAge: {age}\nEmail: {email}\nGender: {gender}")
+    else:
+        print(person, "not in club")
